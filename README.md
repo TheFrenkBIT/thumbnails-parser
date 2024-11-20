@@ -1,14 +1,9 @@
 ![Go Clean Template](docs/img/logo.svg)
 
 # Go Clean template
-[🇨🇳中文](README_CN.md)
 
 Clean Architecture template for Golang services
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/evrone/go-clean-template)](https://goreportcard.com/report/github.com/evrone/go-clean-template)
-[![License](https://img.shields.io/github/license/evrone/go-clean-template.svg)](https://github.com/evrone/go-clean-template/blob/master/LICENSE)
-[![Release](https://img.shields.io/github/v/release/evrone/go-clean-template.svg)](https://github.com/evrone/go-clean-template/releases/)
-[![codecov](https://codecov.io/gh/evrone/go-clean-template/branch/master/graph/badge.svg?token=XE3E0X3EVQ)](https://codecov.io/gh/evrone/go-clean-template)
 
 ## Overview
 The purpose of the template is to show:
@@ -18,13 +13,6 @@ The purpose of the template is to show:
 
 Using the principles of Robert Martin (aka Uncle Bob).
 
-[Go-clean-template](https://evrone.com/go-clean-template?utm_source=github&utm_campaign=go-clean-template) is created & supported by [Evrone](https://evrone.com/?utm_source=github&utm_campaign=go-clean-template).
-
-## Content
-- [Quick start](#quick-start)
-- [Project structure](#project-structure)
-- [Dependency Injection](#dependency-injection)
-- [Clean Architecture](#clean-architecture)
 
 ## Quick start
 Local development:
@@ -51,7 +39,7 @@ Configuration. First, `config.yml` is read, then environment variables overwrite
 The config structure is in the `config.go`.
 The `env-required: true` tag obliges you to specify a value (either in yaml, or in environment variables).
 
-For configuration, we chose the [cleanenv](https://github.com/ilyakaznacheev/cleanenv) library.
+For configuration, I chose the [cleanenv](https://github.com/ilyakaznacheev/cleanenv) library.
 It does not have many stars on GitHub, but is simple and meets all the requirements.
 
 Reading the config from yaml contradicts the ideology of 12 factors, but in practice, it is more convenient than

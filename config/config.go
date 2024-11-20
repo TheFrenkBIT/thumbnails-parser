@@ -13,7 +13,6 @@ type (
 		HTTP `yaml:"http"`
 		Log  `yaml:"logger"`
 		PG   `yaml:"postgres"`
-		RMQ  `yaml:"rabbitmq"`
 	}
 
 	// App -.
