@@ -1,26 +1,19 @@
 version: '3.9'
 services:
 
-  postgres:
-    container_name: postgres
-    image: postgres:latest
-    volumes:
-      - ./pg-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: db
+  redis:
+    image: redis:latest
+    container_name: redis-thumbnail
     ports:
-      - "5432:5432"
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
 
   app:
     build: .
-    container_name: app
+    container_name: thumbnail
     image: app
     ports:
-      - 9090:9090
+      - "9090:9090"
     depends_on:
-      - postgres
-
-volumes:
-  pg-data:
+      - redis

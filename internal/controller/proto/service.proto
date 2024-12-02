@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package parser;
+
+option go_package = "thumbnail.parser";
+
+message ParseRequest {
+  repeated string urls = 1;
+}
+
+message ParseResponse {
+  repeated bytes images = 1;
+}
+service Preview {
+  rpc Parse (ParseRequest) returns (ParseResponse);
+}

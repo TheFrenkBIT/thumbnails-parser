@@ -12,16 +12,16 @@ PATH:=$(LOCAL_BIN):$(PATH)
 help: ## Display this help screen
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
-compose-up: ### Run docker-compose
-	docker-compose up --build -d postgres && docker-compose logs -f
+compose-up: ### Run docker compose
+	docker compose up --build -d redis && docker compose logs -f
 .PHONY: compose-up
 
-compose-up-integration-test: ### Run docker-compose with integration test
-	docker-compose up --build --abort-on-container-exit --exit-code-from integration
+compose-up-integration-test: ### Run docker compose with integration test
+	docker compose up --build --abort-on-container-exit --exit-code-from integration
 .PHONY: compose-up-integration-test
 
-compose-down: ### Down docker-compose
-	docker-compose down --remove-orphans
+compose-down: ### Down docker compose
+	docker compose down --remove-orphans
 .PHONY: compose-down
 
 swag-v1: ### swag init
@@ -30,7 +30,7 @@ swag-v1: ### swag init
 
 run: ### swag run
 	go mod tidy && go mod download && \
-	DISABLE_SWAGGER_HTTP_HANDLER='' GIN_MODE=debug CGO_ENABLED=0 go run -tags migrate ./cmd/app
+	DISABLE_SWAGGER_HTTP_HANDLER='' GIN_MODE=debug CGO_ENABLED=0 go run ./cmd/app
 .PHONY: run
 
 docker-rm-volume: ### remove docker volume
