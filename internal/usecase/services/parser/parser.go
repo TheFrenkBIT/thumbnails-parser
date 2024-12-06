@@ -34,7 +34,6 @@ func (p *Parser) Parse(ctx context.Context, urls []string) ([][]byte, error) {
 			id := p.pullId(u)
 			image, err := p.cache.GetValue(ctx, id)
 			if err != nil {
-				fmt.Println("http")
 				image, err = p.client.GetPreview(fmt.Sprintf(imgUrl, id))
 				p.cache.SetValue(ctx, id, image)
 			}
@@ -68,5 +67,5 @@ func (p *Parser) pullId(url string) string {
 		}
 	}
 
-	return string(urlRune)
+	return string(result)
 }
